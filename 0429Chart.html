@@ -3,10 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>資料以村里為主的65歲以上口動畫式的高雄市村里級熱圖</title>
+    <title>資料以村里為主的互動式熱圖</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .iframe-container {
+            flex: 1;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        p {
+            text-align: center;
+            max-width: 80%;
+            margin: 10px auto;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-    <h1>資料以村里為主的65歲以上口動畫式的高雄市村里級熱圖</h1>
-    <iframe src="https://plotdb.io/v/chart/37288" width="100%" height="600px" allowfullscreen="true" frameborder="0"></iframe>
+    <h1>80-85歲男女性人口比較的高雄市村里級熱圖</h1>
+    <p>從下圖的熱圖中可以發現，在80歲到85歲的區間段發現的女性人口數是大於男性人口數的，可以判斷出，女性的平均年齡較高，在高齡的長輩中高雄市的男女比大約是1:2的情況。</p>
+    <div class="container">
+        <div class="iframe-container">
+            <iframe src="https://plotdb.io/v/chart/37288" width="100%" height="600px" allowfullscreen="true" frameborder="0"></iframe>
+        </div>
+        <div class="iframe-container">
+            <iframe src="https://plotdb.io/v/chart/37301" width="100%" height="600px" allowfullscreen="true" frameborder="0"></iframe>
+        </div>
+    </div>
 </body>
 </html>
