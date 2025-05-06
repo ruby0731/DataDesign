@@ -74,8 +74,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
             display: flex;
-            gap: 20px;
-            align-items: center; /* 文字與圖片垂直置中 */
+            flex-direction: column;
+            align-items: center;
             justify-content: center; /* 水平置中 */
             transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加平滑過渡效果 */
         }
@@ -84,8 +84,7 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 增強框框陰影效果 */
         }
         .idea-box img {
-            max-width: 300px; /* 放大圖片 */
-            margin-left: 60px; /* 向右移動圖片 */
+            max-width: 300px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease; /* 添加平滑過渡效果 */
@@ -102,6 +101,48 @@
         .idea-box .text-content {
             flex: 1;
             line-height: 1.6;
+            text-align: center;
+        }
+        .image-slider {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .image-slider img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            transition: all 0.5s ease;
+        }
+        .image-slider img.active {
+            left: 0;
+        }
+        .image-slider img.prev {
+            left: -100%;
+        }
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .slider-controls button {
+            padding: 10px 20px;
+            background-color: #7e80c5;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .slider-controls button:hover {
+            background-color: #7e80c5;
         }
     </style>
 </head>
@@ -121,12 +162,37 @@
             </div>
         </div>
         <div class="idea-box">
-            <img src="C:\Users\張瓊怡\Downloads\A1113321_張瓊怡_0401課程作業_MSDesigner.jpeg" alt="課程作業圖片">
             <div class="text-content">
                 <h2>集點子</h2>
-                <p>本企劃旨在為家鄉74歲以上、身體健康的長輩設計一系列團康活動，目標是促進長輩的身心健康，豐富退休生活，並貫徹「不老」的理念。家鄉有超過1000名符合條件的長輩，若能及早介入，培養健康的生活習慣，能有效降低未來身心出現狀況的機率。 舉辦社區團康活動，透過滾球、傳球等可以訓練長輩的肢體協調能力，團隊活動提升長輩們社交及情感陪伴、充實退休生活，在玩遊戲的過程同時教導長輩一些自救的處理技巧以及緊急應對的措施，在突發狀況發生時學會冷靜地應對。 但初期需耐心說服長輩參與，透過多元活動設計，讓長輩在遊玩中獲得樂趣與成就感，讓社區活動不再侷限於傳統手工藝或泡茶聊天，也可加入刺激的團隊積分賽，激發長輩的好勝心。</p>
+                <div class="image-slider">
+                    <img src="C:\Users\張瓊怡\Downloads\A1113321_張瓊怡_0401課程作業_gamma.png" class="active" alt="Image 1">
+                    <img src="C:\Users\張瓊怡\Downloads\A1113321_張瓊怡_0401課程作業_MSDesigner.jpeg" alt="Image 2">
+                </div>
+                <div class="slider-controls">
+                    <button id="prev-btn" color="#a2a3cb">上一張</button>
+                    <button id="next-btn" color="#a2a3cb">下一張</button>
+                </div>
+                <div class="text-content">
+                    <p>本企劃旨在為家鄉74歲以上、身體健康的長輩設計一系列團康活動，目標是促進長輩的身心健康，豐富退休生活，並貫徹「不老」的理念。家鄉有超過1000名符合條件的長輩，若能及早介入，培養健康的生活習慣，能有效降低未來身心出現狀況的機率。 舉辦社區團康活動，透過滾球、傳球等可以訓練長輩的肢體協調能力，團隊活動提升長輩們社交及情感陪伴、充實退休生活，在玩遊戲的過程同時教導長輩一些自救的處理技巧以及緊急應對的措施，在突發狀況發生時學會冷靜地應對。 但初期需耐心說服長輩參與，透過多元活動設計，讓長輩在遊玩中獲得樂趣與成就感，讓社區活動不再侷限於傳統手工藝或泡茶聊天，也可加入刺激的團隊積分賽，激發長輩的好勝心。</p>
+                </div>
             </div>
-        </div>
     </div>
+    <script>
+        const images = document.querySelectorAll('.image-slider img');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        let currentIndex = 0;
+
+        function updateSlider(newIndex) {
+            images[currentIndex].classList.remove('active');
+            images[currentIndex].classList.add(newIndex > currentIndex ? 'prev' : '');
+            currentIndex = (newIndex + images.length) % images.length;
+            images[currentIndex].classList.remove('prev');
+            images[currentIndex].classList.add('active');
+        }
+
+        prevBtn.addEventListener('click', () => updateSlider(currentIndex - 1));
+        nextBtn.addEventListener('click', () => updateSlider(currentIndex + 1));
+    </script>
 </body>
 </html>
