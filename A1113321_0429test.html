@@ -49,6 +49,11 @@
             background-color: #a2a3cb;
             padding: 10px; 
             box-sizing: border-box;
+            transition: transform 0.3s ease; /* 添加平滑過渡效果 */
+        }
+
+        .iframe-container:hover {
+            transform: scale(1.05); /* 游標移到框框上時放大1.05倍 */
         }
         .iframe-container h2 {
             text-align: center;
@@ -72,10 +77,15 @@
             gap: 20px;
             align-items: center; /* 文字與圖片垂直置中 */
             justify-content: center; /* 水平置中 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加平滑過渡效果 */
         }
-        
+        .idea-box:hover {
+            transform: scale(1.05); /* 框框整體放大 */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 增強框框陰影效果 */
+        }
         .idea-box img {
-            max-width: 180px; /* 將圖片放大 */
+            max-width: 300px; /* 放大圖片 */
+            margin-left: 60px; /* 向右移動圖片 */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease; /* 添加平滑過渡效果 */
@@ -99,7 +109,7 @@
     <div class="wrapper">
         <h1>80-85歲男女性人口比較的高雄市村里級熱圖</h1>
         <p>從下圖的熱圖中可以發現，在80歲以上區間段發現的女性人口數是大於男性人口數的，可以判斷出女性的平均年齡較高，在80歲以上區間段的高齡長輩中女性人口佔比較高比例，且男女性別比大約為3:2，且在偏遠山區的80歲以上長者較少，村里的人數稀少，可見人口有明顯集中在都市的情況，且在都市的長輩資源較多，離醫院等場所較接近，因此推測其可以更快的得到需要的幫助。</p>
-<!--         <p>會選擇判斷80歲以上的男女性別人口差異是因為，在之前的資料處理中發現，高雄市在79歲時人口有明顯變少，因此想要看看在80歲以後的人口數是否有明顯差異，若是有可能就要顧慮一下男女生在79歲時，可能是一個大的關卡，部分的長者可能到79歲時就沒那麼有精氣神。</p> -->
+        <p>會選擇判斷80歲以上的男女性別人口差異是因為，在之前的資料處理中發現，高雄市在79歲時人口有明顯變少，因此想要看看在80歲以後的人口數是否有明顯差異，若是有可能就要顧慮一下男女生在79歲時，可能是一個大的關卡，部分的長者可能到79歲時就沒那麼有精氣神。</p>
         <div class="container">
             <div class="iframe-container">
                 <h2>男性人口</h2>
@@ -110,7 +120,6 @@
                 <iframe src="https://plotdb.io/v/chart/37288" width="100%" height="600px" allowfullscreen="true" frameborder="0"></iframe>
             </div>
         </div>
-        <!-- 新增的框框 -->
         <div class="idea-box">
             <img src="C:\Users\張瓊怡\Downloads\A1113321_張瓊怡_0401課程作業_MSDesigner.jpeg" alt="課程作業圖片">
             <div class="text-content">
